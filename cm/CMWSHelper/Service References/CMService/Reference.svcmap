@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5087c490-12d5-4fec-a7dd-3bacc42d29ab" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49202/CampaignManager/CMService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CMService66.xsd" MetadataType="Schema" ID="8850c518-9e8e-48a3-b2f3-888a596480de" SourceId="1" SourceUrl="http://phsd138-v12:49202/CampaignManager/CMService?xsd=xsd0" />
+    <MetadataFile FileName="CMService67.xsd" MetadataType="Schema" ID="228a85e0-d4b6-4426-9897-da6cab626b88" SourceId="1" SourceUrl="http://phsd138-v12:49202/CampaignManager/CMService?xsd=xsd2" />
+    <MetadataFile FileName="CMService68.xsd" MetadataType="Schema" ID="f9fa8c06-e9e1-47be-9f02-af4cfba71f1f" SourceId="1" SourceUrl="http://phsd138-v12:49202/CampaignManager/CMService?xsd=xsd1" />
+    <MetadataFile FileName="CMService21.wsdl" MetadataType="Wsdl" ID="31414536-7cc8-4977-8446-620b34bdbeb6" SourceId="1" SourceUrl="http://phsd138-v12:49202/CampaignManager/CMService?wsdl=wsdl0" />
+    <MetadataFile FileName="CMService69.xsd" MetadataType="Schema" ID="9d1376ed-0311-43a0-bb66-20842dc33258" SourceId="1" SourceUrl="http://phsd138-v12:49202/CampaignManager/CMService?xsd=xsd4" />
+    <MetadataFile FileName="CMService610.xsd" MetadataType="Schema" ID="379b92a9-261b-42be-a1ac-8964dd19059a" SourceId="1" SourceUrl="http://phsd138-v12:49202/CampaignManager/CMService?xsd=xsd5" />
+    <MetadataFile FileName="CMService611.xsd" MetadataType="Schema" ID="26a0c4b9-a515-432b-b363-ece90133595f" SourceId="1" SourceUrl="http://phsd138-v12:49202/CampaignManager/CMService?xsd=xsd3" />
+    <MetadataFile FileName="CMService1.wsdl" MetadataType="Wsdl" ID="ab398c32-b76f-4c04-b279-6126e248fe9f" SourceId="1" SourceUrl="http://localhost:49202/CampaignManager/CMService" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

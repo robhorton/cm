@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="EmersonProcess.Web.Services.CampaignManager" elementFormDefault="qualified" targetNamespace="EmersonProcess.Web.Services.CampaignManager" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://phsd204-mat.emrsn.org:49202/CampaignManager/CMService?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://phsd204-mat.emrsn.org:49202/CampaignManager/CMService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="Connect">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="domain" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConnectResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCampaign">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignInfo" nillable="true" type="tns:CampaignInfo" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CampaignInfo">
+    <xs:sequence>
+      <xs:element name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MaxActiveBatches" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Prefix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Suffix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartSequence" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AutoRemoveInManual" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AutoRemoveInAutoRelease" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AutoRemoveInAutoStart" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="BatchExecutionMode" nillable="true" type="tns:BatchExecutionMode" />
+      <xs:element minOccurs="0" name="ContinuousIteration" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MinRemoveDelay" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IsLocked" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LockCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LockOwner" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchCompleteCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="InProcessBatches" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="State" type="tns:CampaignStatus" />
+      <xs:element minOccurs="0" name="BatchList" nillable="true" type="tns:ArrayOfBatchInfo" />
+      <xs:element minOccurs="0" name="BaseRecipe" nillable="true" type="tns:RecipeInfo" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserComments" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CampaignInfo" nillable="true" type="tns:CampaignInfo" />
+  <xs:simpleType name="BatchExecutionMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Manual" />
+      <xs:enumeration value="AutoRelease" />
+      <xs:enumeration value="AutoStart" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BatchExecutionMode" nillable="true" type="tns:BatchExecutionMode" />
+  <xs:simpleType name="CampaignStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Defining" />
+      <xs:enumeration value="Defined" />
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="Complete" />
+      <xs:enumeration value="Terminated" />
+      <xs:enumeration value="Closed" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CampaignStatus" nillable="true" type="tns:CampaignStatus" />
+  <xs:complexType name="ArrayOfBatchInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BatchInfo" nillable="true" type="tns:BatchInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBatchInfo" nillable="true" type="tns:ArrayOfBatchInfo" />
+  <xs:complexType name="BatchInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Setup" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Cleanup" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsBasedOnBaseRecipe" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Index" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IsLockedForEdit" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LockEditOwner" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EditLockCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IsLockedForControl" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LockControlOwner" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ControlLockCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReleasedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReleasedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RemovedFromExecutiveBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RemovedFromExecutiveDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="State" type="tns:BatchStatus" />
+      <xs:element minOccurs="0" name="StatusMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recipe" nillable="true" type="tns:RecipeInfo" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserComments" nillable="true" type="q2:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BatchInfo" nillable="true" type="tns:BatchInfo" />
+  <xs:simpleType name="BatchStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Defining" />
+      <xs:enumeration value="Defined" />
+      <xs:enumeration value="Released" />
+      <xs:enumeration value="ActiveReady" />
+      <xs:enumeration value="ActiveAborting" />
+      <xs:enumeration value="ActiveAborted" />
+      <xs:enumeration value="ActiveHolding" />
+      <xs:enumeration value="ActiveHeld" />
+      <xs:enumeration value="ActiveStopping" />
+      <xs:enumeration value="ActiveStopped" />
+      <xs:enumeration value="ActiveIdle" />
+      <xs:enumeration value="ActiveStarting" />
+      <xs:enumeration value="ActiveRestarting" />
+      <xs:enumeration value="ActiveRunning" />
+      <xs:enumeration value="ActiveComplete" />
+      <xs:enumeration value="CompleteNoError" />
+      <xs:enumeration value="ReleasedFailed" />
+      <xs:enumeration value="Closed" />
+      <xs:enumeration value="LoadFailed" />
+      <xs:enumeration value="Recovering" />
+      <xs:enumeration value="RecoverFailed" />
+      <xs:enumeration value="Lost" />
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Releasing" />
+      <xs:enumeration value="Starting" />
+      <xs:enumeration value="Removing" />
+      <xs:enumeration value="CompleteWithError" />
+      <xs:enumeration value="CompleteNotStarted" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BatchStatus" nillable="true" type="tns:BatchStatus" />
+  <xs:complexType name="RecipeInfo">
+    <xs:sequence>
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element name="Executive" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Scale" nillable="true" type="xs:float" />
+      <xs:element minOccurs="0" name="ScaleUnits" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EquipmentTrain" nillable="true" type="tns:EquipmentTrain" />
+      <xs:element minOccurs="0" name="Formula" nillable="true" type="tns:Formula" />
+      <xs:element minOccurs="0" name="UnitBindings" nillable="true" type="tns:ArrayOfUnitBinding" />
+      <xs:element minOccurs="0" name="UnitAliasing" nillable="true" type="tns:ArrayOfUnitAlias" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RecipeInfo" nillable="true" type="tns:RecipeInfo" />
+  <xs:complexType name="EquipmentTrain">
+    <xs:sequence>
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EquipmentTrain" nillable="true" type="tns:EquipmentTrain" />
+  <xs:complexType name="Formula">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCustomFormula" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Parameters" nillable="true" type="tns:ArrayOfParameter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Formula" nillable="true" type="tns:Formula" />
+  <xs:complexType name="ArrayOfParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Parameter" nillable="true" type="tns:Parameter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfParameter" nillable="true" type="tns:ArrayOfParameter" />
+  <xs:complexType name="Parameter">
+    <xs:sequence>
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Min" type="xs:float" />
+      <xs:element name="Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Max" type="xs:float" />
+      <xs:element minOccurs="0" name="EU" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParamType" type="tns:RecipeParamType" />
+      <xs:element minOccurs="0" name="Scalable" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Parameter" nillable="true" type="tns:Parameter" />
+  <xs:simpleType name="RecipeParamType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Integer">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NamedSet">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Real" />
+      <xs:enumeration value="String" />
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RecipeParamType" nillable="true" type="tns:RecipeParamType" />
+  <xs:complexType name="ArrayOfUnitBinding">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UnitBinding" nillable="true" type="tns:UnitBinding" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUnitBinding" nillable="true" type="tns:ArrayOfUnitBinding" />
+  <xs:complexType name="UnitBinding">
+    <xs:sequence>
+      <xs:element name="StepName" nillable="true" type="xs:string" />
+      <xs:element name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnitBinding" nillable="true" type="tns:UnitBinding" />
+  <xs:complexType name="ArrayOfUnitAlias">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UnitAlias" nillable="true" type="tns:UnitAlias" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUnitAlias" nillable="true" type="tns:ArrayOfUnitAlias" />
+  <xs:complexType name="UnitAlias">
+    <xs:sequence>
+      <xs:element name="AliasName" nillable="true" type="xs:string" />
+      <xs:element name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectionMode" nillable="true" type="tns:SelectionMode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnitAlias" nillable="true" type="tns:UnitAlias" />
+  <xs:simpleType name="SelectionMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Defer">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FromPolicy">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DeferAndHasPolicy">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SelectionMode" nillable="true" type="tns:SelectionMode" />
+  <xs:complexType name="UserInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConfirmerUsername" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConfirmerPassword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerifierUsername" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerifierPassword" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserInfo" nillable="true" type="tns:UserInfo" />
+  <xs:element name="CreateCampaignResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyCampaign">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignInfo" nillable="true" type="tns:CampaignInfo" />
+        <xs:element minOccurs="0" name="changeModeToManual" type="xs:boolean" />
+        <xs:element minOccurs="0" name="revertToPrevMode" type="xs:boolean" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyCampaignResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveCampaign">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="comments" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveCampaignResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TerminateCampaign">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="comments" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TerminateCampaignResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCampaignStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCampaignStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCampaignStatusResult" nillable="true" type="tns:CampaignInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LockCampaign">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="editLockAction" type="tns:LockAction" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="LockAction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Lock">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unlock">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LockAction" nillable="true" type="tns:LockAction" />
+  <xs:element name="LockCampaignResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserComment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="comments" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserCommentResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBatchStatusResult" nillable="true" type="tns:BatchInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchInfo" nillable="true" type="tns:BatchInfo" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddBatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddBatchResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchInfo" nillable="true" type="tns:BatchInfo" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyBatchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBatchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReleaseBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReleaseBatchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartBatchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveBatchFromExecutive">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveBatchFromExecutiveResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LockBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="editLockAction" type="tns:LockAction" />
+        <xs:element minOccurs="0" name="controlLockAction" type="tns:LockAction" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LockBatchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddBatchComment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="campaignID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="comment" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userInfo" nillable="true" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddBatchCommentResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanConfirmerAndVerifierBeSame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanConfirmerAndVerifierBeSameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CanConfirmerAndVerifierBeSameResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConfiguredActionInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="configuredAction" type="tns:ConfiguredAction" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="ConfiguredAction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ReleaseBatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AddCampaign">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ConfigureClient" />
+      <xs:enumeration value="RemoveCampaign">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ModifyBatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ModifyCampaign" />
+      <xs:enumeration value="RemoveBatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="StartBatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="StartClient">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="StopClient">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UnlockCampaign">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UserComment">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ConfiguredAction" nillable="true" type="tns:ConfiguredAction" />
+  <xs:element name="GetConfiguredActionInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetConfiguredActionInfoResult" nillable="true" type="tns:ConfiguredActionInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ConfiguredActionInfo">
+    <xs:sequence>
+      <xs:element name="ConfiguredAction" type="tns:ConfiguredAction" />
+      <xs:element name="IsConfirmerRequired" type="xs:boolean" />
+      <xs:element name="IsVerifierRequired" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConfiguredActionInfo" nillable="true" type="tns:ConfiguredActionInfo" />
+  <xs:element name="GetCMServers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCMServersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetCMServersResult" nillable="true" type="q3:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchExecutives">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchExecutivesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetBatchExecutivesResult" nillable="true" type="q4:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCampaignList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCampaignListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetCampaignListResult" nillable="true" type="q5:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecipeList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchExecutive" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecipeListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetRecipeListResult" nillable="true" type="q6:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecipeUnits">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchExecutive" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="recipeName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="equipmentTrain" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="stepOrAliasName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecipeUnitsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRecipeUnitsResult" nillable="true" type="tns:ArrayOfUnitOrAlias" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfUnitOrAlias">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UnitOrAlias" nillable="true" type="tns:UnitOrAlias" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUnitOrAlias" nillable="true" type="tns:ArrayOfUnitOrAlias" />
+  <xs:complexType name="UnitOrAlias">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="UnitOrAlias" nillable="true" type="tns:UnitOrAlias" />
+  <xs:complexType name="Unit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UnitOrAlias">
+        <xs:sequence>
+          <xs:element name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Class" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProcessCell" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaxOwners" type="xs:int" />
+          <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DownstreamUnits" nillable="true" type="q7:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Unit" nillable="true" type="tns:Unit" />
+  <xs:complexType name="Alias">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UnitOrAlias">
+        <xs:sequence>
+          <xs:element name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UnitClass" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SelectionMode" nillable="true" type="tns:SelectionMode" />
+          <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DownstreamAliases" nillable="true" type="q8:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Alias" nillable="true" type="tns:Alias" />
+  <xs:element name="GetEquipmentTrainAliases">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchExecutive" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="recipeName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="equipmentTrain" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEquipmentTrainAliasesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetEquipmentTrainAliasesResult" nillable="true" type="q9:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExecutiveRecipeInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchExecutive" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="recipeName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExecutiveRecipeInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetExecutiveRecipeInfoResult" nillable="true" type="tns:ExecRecipeInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ExecRecipeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Abstract" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassOrInstance" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchEU" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchRunLength" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchSizeDefault" type="xs:float" />
+      <xs:element minOccurs="0" name="BatchSizeMin" type="xs:float" />
+      <xs:element minOccurs="0" name="BatchSizeMax" type="xs:float" />
+      <xs:element minOccurs="0" name="Equipment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EquipmentTrainClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxScaleEnforced" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ProductCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductVersion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Released" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VersionNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VersionDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ValidatedAgainst" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValidationTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApprovedBy" nillable="true" type="xs:string" />
+      <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FormulaList" nillable="true" type="q10:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Parameters" nillable="true" type="tns:ArrayOfParameter" />
+      <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="EquipmentTrains" nillable="true" type="q11:ArrayOfstring" />
+      <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Aliases" nillable="true" type="q12:ArrayOfstring" />
+      <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Steps" nillable="true" type="q13:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExecRecipeInfo" nillable="true" type="tns:ExecRecipeInfo" />
+  <xs:element name="GetFormulaInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cmServer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchExecutive" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="recipeName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="formulaName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFormulaInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFormulaInfoResult" nillable="true" type="tns:Formula" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

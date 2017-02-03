@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="EmersonProcess.Web.Services.CampaignManager" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="EmersonProcess.Web.Services.CampaignManager" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="EmersonProcess.Web.Services.CampaignManager/Imports">
+      <xsd:import schemaLocation="http://phsd204-mat.emrsn.org:49202/CampaignManager/CMService?xsd=xsd0" namespace="EmersonProcess.Web.Services.CampaignManager" />
+      <xsd:import schemaLocation="http://phsd204-mat.emrsn.org:49202/CampaignManager/CMService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel" />
+      <xsd:import schemaLocation="http://phsd204-mat.emrsn.org:49202/CampaignManager/CMService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://phsd204-mat.emrsn.org:49202/CampaignManager/CMService?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://phsd204-mat.emrsn.org:49202/CampaignManager/CMService?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://phsd204-mat.emrsn.org:49202/CampaignManager/CMService?xsd=xsd5" namespace="http://schemas.microsoft.com/Message" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICMService_Connect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_Connect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_Connect_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q1:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_CreateCampaign_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCampaign" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_CreateCampaign_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_CreateCampaign_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q2:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_ModifyCampaign_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyCampaign" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_ModifyCampaign_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_ModifyCampaign_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q3:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_RemoveCampaign_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCampaign" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_RemoveCampaign_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_RemoveCampaign_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q4:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_TerminateCampaign_InputMessage">
+    <wsdl:part name="parameters" element="tns:TerminateCampaign" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_TerminateCampaign_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TerminateCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_TerminateCampaign_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q5:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetCampaignStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCampaignStatus" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetCampaignStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCampaignStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetCampaignStatus_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q6:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_LockCampaign_InputMessage">
+    <wsdl:part name="parameters" element="tns:LockCampaign" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_LockCampaign_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LockCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_LockCampaign_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q7:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_AddUserComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserComment" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_AddUserComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_AddUserComment_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q8:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetBatchStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchStatus" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetBatchStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetBatchStatus_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q9:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_AddBatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBatch" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_AddBatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_AddBatch_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q10:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_ModifyBatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyBatch" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_ModifyBatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_ModifyBatch_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q11:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_DeleteBatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBatch" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_DeleteBatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_DeleteBatch_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q12:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_ReleaseBatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReleaseBatch" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_ReleaseBatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReleaseBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_ReleaseBatch_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q13:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_StartBatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartBatch" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_StartBatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_StartBatch_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q14:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_RemoveBatchFromExecutive_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBatchFromExecutive" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_RemoveBatchFromExecutive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBatchFromExecutiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_RemoveBatchFromExecutive_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q15:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_LockBatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:LockBatch" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_LockBatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LockBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_LockBatch_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q16:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_AddBatchComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBatchComment" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_AddBatchComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBatchCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_AddBatchComment_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q17:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_CanConfirmerAndVerifierBeSame_InputMessage">
+    <wsdl:part name="parameters" element="tns:CanConfirmerAndVerifierBeSame" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_CanConfirmerAndVerifierBeSame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CanConfirmerAndVerifierBeSameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_CanConfirmerAndVerifierBeSame_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q18:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetConfiguredActionInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfiguredActionInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetConfiguredActionInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfiguredActionInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetConfiguredActionInfo_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q19:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetCMServers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCMServers" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetCMServers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCMServersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetCMServers_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q20:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetBatchExecutives_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchExecutives" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetBatchExecutives_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchExecutivesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetBatchExecutives_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q21:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetCampaignList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCampaignList" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetCampaignList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCampaignListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetCampaignList_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q22:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetRecipeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecipeList" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetRecipeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecipeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetRecipeList_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q23:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetRecipeUnits_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecipeUnits" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetRecipeUnits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecipeUnitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetRecipeUnits_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q24:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetEquipmentTrainAliases_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEquipmentTrainAliases" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetEquipmentTrainAliases_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEquipmentTrainAliasesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetEquipmentTrainAliases_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q25:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetExecutiveRecipeInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExecutiveRecipeInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetExecutiveRecipeInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExecutiveRecipeInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetExecutiveRecipeInfo_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q26:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetFormulaInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormulaInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetFormulaInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormulaInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_GetFormulaInfo_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q27:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_PerformOperations_InputMessage">
+    <wsdl:part xmlns:q28="http://schemas.microsoft.com/Message" name="msg" type="q28:MessageBody" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_PerformOperations_OutputMessage">
+    <wsdl:part xmlns:q29="http://schemas.microsoft.com/Message" name="PerformOperationsResult" type="q29:MessageBody" />
+  </wsdl:message>
+  <wsdl:message name="ICMService_PerformOperations_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q30:FaultException" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="true" name="ICMService">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Connect">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/Connect" message="tns:ICMService_Connect_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/ConnectResponse" message="tns:ICMService_Connect_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/ConnectFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_Connect_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="CreateCampaign">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/CreateCampaign" message="tns:ICMService_CreateCampaign_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/CreateCampaignResponse" message="tns:ICMService_CreateCampaign_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/CreateCampaignFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_CreateCampaign_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="ModifyCampaign">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/ModifyCampaign" message="tns:ICMService_ModifyCampaign_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/ModifyCampaignResponse" message="tns:ICMService_ModifyCampaign_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/ModifyCampaignFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_ModifyCampaign_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="RemoveCampaign">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/RemoveCampaign" message="tns:ICMService_RemoveCampaign_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/RemoveCampaignResponse" message="tns:ICMService_RemoveCampaign_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/RemoveCampaignFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_RemoveCampaign_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="TerminateCampaign">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/TerminateCampaign" message="tns:ICMService_TerminateCampaign_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/TerminateCampaignResponse" message="tns:ICMService_TerminateCampaign_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/TerminateCampaignFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_TerminateCampaign_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetCampaignStatus">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetCampaignStatus" message="tns:ICMService_GetCampaignStatus_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetCampaignStatusResponse" message="tns:ICMService_GetCampaignStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetCampaignStatusFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_GetCampaignStatus_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="LockCampaign">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/LockCampaign" message="tns:ICMService_LockCampaign_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/LockCampaignResponse" message="tns:ICMService_LockCampaign_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/LockCampaignFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_LockCampaign_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="AddUserComment">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/AddUserComment" message="tns:ICMService_AddUserComment_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/AddUserCommentResponse" message="tns:ICMService_AddUserComment_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/AddUserCommentFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_AddUserComment_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetBatchStatus">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetBatchStatus" message="tns:ICMService_GetBatchStatus_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetBatchStatusResponse" message="tns:ICMService_GetBatchStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetBatchStatusFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_GetBatchStatus_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="AddBatch">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/AddBatch" message="tns:ICMService_AddBatch_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/AddBatchResponse" message="tns:ICMService_AddBatch_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/AddBatchFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_AddBatch_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="ModifyBatch">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/ModifyBatch" message="tns:ICMService_ModifyBatch_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/ModifyBatchResponse" message="tns:ICMService_ModifyBatch_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/ModifyBatchFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_ModifyBatch_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="DeleteBatch">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/DeleteBatch" message="tns:ICMService_DeleteBatch_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/DeleteBatchResponse" message="tns:ICMService_DeleteBatch_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/DeleteBatchFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_DeleteBatch_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="ReleaseBatch">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/ReleaseBatch" message="tns:ICMService_ReleaseBatch_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/ReleaseBatchResponse" message="tns:ICMService_ReleaseBatch_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/ReleaseBatchFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_ReleaseBatch_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="StartBatch">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/StartBatch" message="tns:ICMService_StartBatch_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/StartBatchResponse" message="tns:ICMService_StartBatch_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/StartBatchFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_StartBatch_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="RemoveBatchFromExecutive">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/RemoveBatchFromExecutive" message="tns:ICMService_RemoveBatchFromExecutive_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/RemoveBatchFromExecutiveResponse" message="tns:ICMService_RemoveBatchFromExecutive_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/RemoveBatchFromExecutiveFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_RemoveBatchFromExecutive_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="LockBatch">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/LockBatch" message="tns:ICMService_LockBatch_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/LockBatchResponse" message="tns:ICMService_LockBatch_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/LockBatchFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_LockBatch_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="AddBatchComment">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/AddBatchComment" message="tns:ICMService_AddBatchComment_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/AddBatchCommentResponse" message="tns:ICMService_AddBatchComment_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/AddBatchCommentFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_AddBatchComment_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="CanConfirmerAndVerifierBeSame">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/CanConfirmerAndVerifierBeSame" message="tns:ICMService_CanConfirmerAndVerifierBeSame_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/CanConfirmerAndVerifierBeSameResponse" message="tns:ICMService_CanConfirmerAndVerifierBeSame_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/CanConfirmerAndVerifierBeSameFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_CanConfirmerAndVerifierBeSame_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetConfiguredActionInfo">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetConfiguredActionInfo" message="tns:ICMService_GetConfiguredActionInfo_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetConfiguredActionInfoResponse" message="tns:ICMService_GetConfiguredActionInfo_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetConfiguredActionInfoFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_GetConfiguredActionInfo_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetCMServers">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetCMServers" message="tns:ICMService_GetCMServers_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetCMServersResponse" message="tns:ICMService_GetCMServers_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetCMServersFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_GetCMServers_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetBatchExecutives">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetBatchExecutives" message="tns:ICMService_GetBatchExecutives_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetBatchExecutivesResponse" message="tns:ICMService_GetBatchExecutives_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetBatchExecutivesFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_GetBatchExecutives_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetCampaignList">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetCampaignList" message="tns:ICMService_GetCampaignList_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetCampaignListResponse" message="tns:ICMService_GetCampaignList_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetCampaignListFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_GetCampaignList_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetRecipeList">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetRecipeList" message="tns:ICMService_GetRecipeList_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetRecipeListResponse" message="tns:ICMService_GetRecipeList_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetRecipeListFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_GetRecipeList_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetRecipeUnits">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetRecipeUnits" message="tns:ICMService_GetRecipeUnits_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetRecipeUnitsResponse" message="tns:ICMService_GetRecipeUnits_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetRecipeUnitsFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_GetRecipeUnits_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetEquipmentTrainAliases">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetEquipmentTrainAliases" message="tns:ICMService_GetEquipmentTrainAliases_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetEquipmentTrainAliasesResponse" message="tns:ICMService_GetEquipmentTrainAliases_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetEquipmentTrainAliasesFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_GetEquipmentTrainAliases_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetExecutiveRecipeInfo">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetExecutiveRecipeInfo" message="tns:ICMService_GetExecutiveRecipeInfo_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetExecutiveRecipeInfoResponse" message="tns:ICMService_GetExecutiveRecipeInfo_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetExecutiveRecipeInfoFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_GetExecutiveRecipeInfo_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetFormulaInfo">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetFormulaInfo" message="tns:ICMService_GetFormulaInfo_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetFormulaInfoResponse" message="tns:ICMService_GetFormulaInfo_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/GetFormulaInfoFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_GetFormulaInfo_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="PerformOperations">
+      <wsdl:input wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/PerformOperations" message="tns:ICMService_PerformOperations_InputMessage" />
+      <wsdl:output wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/PerformOperationsResponse" message="tns:ICMService_PerformOperations_OutputMessage" />
+      <wsdl:fault wsaw:Action="EmersonProcess.Web.Services.CampaignManager/ICMService/PerformOperationsFaultExceptionFault" name="FaultExceptionFault" message="tns:ICMService_PerformOperations_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
